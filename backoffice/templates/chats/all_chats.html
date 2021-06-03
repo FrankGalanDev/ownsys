@@ -1,0 +1,142 @@
+{% extends 'layouts/backoffice.html'%}
+{%load static %}
+{% load humanize %}
+{% block content %}
+
+<section>
+
+
+<!--
+<form method="POST">
+  {%csrf_token%}
+  <input type="text" name="message"  />
+  <input type="submit" name="chat" value="chat" />
+  <input type="submit" name="reset" value="reset" />
+  <a href="{% url 'backoffice' %}" target="_blank">Cancel</a>
+</p>
+</form>
+
+<div id="chatcontent" name="chatcontent" style="border:2px solid black; height:200px; width:45%; overflow:scroll;">
+ <img src= {% static "icons/Pinwheel.gif" %} alt="...Loading">
+
+
+ 
+</div>
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+
+    <!-- -------------PANEL PRIMARY.------------>  
+            <div class="panel panel-primary">
+
+    <!-- -------------PANEL HEADING.------------>         	
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment">
+                    	<img style=" height:50px;" src= {% static "icons/Speaker.gif" %} alt="...Loading">
+                    </span> Chat
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+	                        <li>
+	                        	 <a href=" {% url 'all_user' %}">
+	                        	    <span class="glyphicon glyphicon-refresh">
+	                                </span>
+	                                Users
+	                            </a>
+	                        </li>
+	                        <li>
+	                        	 <a href=" {% url 'all_customer' %}">
+	                        		<span class="glyphicon glyphicon-ok-sign">
+	                                </span>
+	                                Customers
+	                            </a>
+	                        </li>
+	                        <li>
+	                        	 <a href=" {% url 'all_sold' %}">
+	                        		<span class="glyphicon glyphicon-remove">
+	                                </span>
+	                                Busy
+	                            </a>
+	                        </li>
+                 <!--           
+	                        <li>
+	                        	<a href="http://www.jquery2dotnet.com">
+	                        		<span class="glyphicon glyphicon-time">
+                                    </span>
+	                                  Away
+	                              </a>
+	                        </li>
+	                        <li class="divider"></li>
+	                        <li>
+	                        	<a href="http://www.jquery2dotnet.com">
+	                        		<span class="glyphicon glyphicon-off">
+	                        			
+	                        		</span>
+	                                Sign Out
+	                            </a>
+	                        </li>
+                        -->
+                        </ul>
+                    </div>
+                </div>
+    <!-- -------------/PANEL PRIMARY.------------>  
+
+    <!-- -------------PANEL BODY.------------>              
+                <div class="panel-body">
+                    <div class="chat">
+                        
+                        <div class="left clearfix">
+                         	
+
+                            <div class="chatcontent" id="chatcontent">
+                                <div class="header">
+                                   
+                                      <strong class="primary-font"></strong> <small class="pull-right text-muted">
+                                          <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                </div>
+                                  
+                              
+                             
+                            </div>
+                        </div>
+                       
+                          
+                    </div>
+                       
+                </div>
+    <!-- -------------/PANEL BODY.------------>                
+
+    <!-- -------------FOOTER.------------>               
+                <div class="panel-footer">
+                    <form method="POST">
+                    {% csrf_token %}  
+                        <div class="input-group">
+                            <input id="btn-input" type="text"  name="message" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button type=submit class="btn btn-success btn-sm" id="btn-chat" name="chat" value="chat">    Chat
+                                </button>
+                                <button type=submit name="reset" class="btn btn-danger btn-sm" id="btn-chat" value="Reset">.  Reset
+                                </button>
+                                <a href="{% url 'backoffice' %}" target="_blank">Cancel</a> 
+                            </span>
+                        </div>
+                    </form>
+                </div>
+<!-- -------------/FOOTER.------------>
+
+            </div>
+<!---------------- /PANEL PRIMARY-------------------->
+          </div>
+      </div>
+  </div>
+
+
+</section> 
+
+{% endblock %} 
+    
+ 

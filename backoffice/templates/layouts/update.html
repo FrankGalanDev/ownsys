@@ -1,0 +1,40 @@
+{% extends 'layouts/backoffice.html' %}
+
+{% block content %}
+
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%  url 'backoffice' %}" >Home</a></li>
+            <li class="breadcrumb-item active">Forms</li>
+          </ul>
+        </div>
+      </div>
+      <section class="forms">
+        <div class="container-fluid">
+          <!-- Page Header-->
+          <header> 
+            <h1 class="h3 display">{% block tittle %} {{tittle}} {% endblock %}          </h1>
+          </header>
+          <div class="row">
+            <div class="col-lg-10 ">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4><i class="fas fa fa-wrench"></i>{% block table_tittle %} {{table_tittle}} {% endblock %}</h4>
+                </div>
+                <div class="card-body">
+                  <p>{% block table_subtittle %} {{table_subtittle}}  {% endblock %}.</p>
+
+                  {% block form %}
+
+                 
+                  
+                    {% endblock %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}           

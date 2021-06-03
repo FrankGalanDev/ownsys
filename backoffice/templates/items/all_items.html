@@ -1,0 +1,232 @@
+{% extends 'layouts/items_show.html'%}
+{% load static %}
+
+
+  <!---START BLOCK CONTENT-->  
+  {% block content %}
+    <!-- Start Section-->
+    <section>
+
+      <!-- basic head -->
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active">Tables</li>
+          </ul>
+        </div>
+      </div>
+      <!-- /basic head-->
+    
+    <!---START BLOCK ITEM-->
+    {% block item %} 
+
+    {% for a in object_list  %}
+
+      <!-- Slider area--> 
+  <div class="container-fluid">
+       
+        <!-- Superior div-->         
+    <div style= "display:flex;">
+
+          <!-- Details Area-->        
+      <div class="col-lg-5 ">
+            <h2 class="h3">Name: {{a.item_name | default:_('Jacket')}}
+              <a href="{% url 'update_item' a.id %}">
+                <button  class="bt_update" type="submit" >
+                  <i class="fa fa-eye"></i>
+                </button>
+              </a>
+              <a href="{% url 'delete_item' a.id %}">
+                <button class="bt_delete" type="submit" style ='color:red';>
+                  <i class="fa fa-trash"></i>
+                </button>
+              </a>
+              <a href="{% url 'new_invoice' a.id %}">
+                <button class="bt_info" type="submit" style ='color:red';>
+                  <i class="fa fa-print"></i>
+                </button>
+              </a>
+            </h2>
+            <p class="item_line">{{ a.price| default:_('120.0 ')}}{{ a.currency| default:_('$')}}</p>
+                
+            <p class="item_line"> Operation: {{ a.operation| default:_('Sales ')}}</p>
+            <p class="item_line"> Sold: {{ a.is_sold| default:_('yes')}}</p>
+            <p class="item_line"> Brand: {{ a.brand| default:_('Marca')}}</p>
+            <p class="item_line"> Tax: {{ a.tax| default:_('21')}} %</p>
+            <p class="item_line"> Purchase Cost: {{ a.purchase_price| default:_('60')}} {{ a.currency| default:_('$')}}</p>
+            <p class="item_line"> Quantity: {{ a.count| default:_('12')}} {{ a.currency| default:_('$')}}</p>
+            <p class="item_line"> Family: {{ a.family| default:_('WestWorld')}}</p>
+            <p class="item_line"> Subfamily: {{ a.subfamily| default:_('Simple')}}</p>
+            <p class="item_line"> Category: {{ a.categ| default:_('Imported')}}</p>
+            <p class="item_line"> operation: {{ a.operation| default:_('Sales')}}</p>
+            <p class="item_line"> EAN code: {{ a.ean| default:_('11223344556677')}}</p>
+            <p class="item_line"> Size: {{ a.size| default:_('M')}}</p>
+            <p class="item_line"> Weight: {{ a.weight| default:_('25')}}</p>
+            <p class="item_line"> Color: {{ a.color| default:_('aquablue')}}</p>
+            <p class="item_line">SKU: {{ a.item_SKU| default:_('5656565656')}}</p>
+            <p class="item_line"> Section: {{a.section | default:_('Store A')}}</p>
+            <p class="item_line">Status: {{ a.status| default:_('ready ')}}</p>
+            <p class="item_line">Active: {{ a.is_active| default:_('yes. ')}}</p>  
+      </div>
+          <!-- /Details Area-->
+      
+          <!-- Main Image Area-->       
+          <div class="col-lg-7">
+            <div class="mx-3 my-3" data-slider-id="1">
+
+              <a class="d-block" href="/media/{{a.image}}" data-lightbox="tool-gallery" title="Gallery item 1"><img class="img-fluid" src="/media/{{a.image}}" alt="...">
+              </a>
+                 
+            </div>
+          </div>
+          <!--/ Main Image Area--> 
+        
+    </div>
+        <!--/ Superior div -->  
+        
+        <!-- Description  div--> 
+    <div class="row" >
+          <hr>
+          <p class="mb-0">Description:{{a.item_description | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text. ')}}</p>
+          <hr>        
+    </div>
+        <!--/ Description div--> 
+
+
+        <!-- Item List -->
+  
+    <section id="gallery" class="gallery">
+          <!-- Recomendaciones -->
+  <div class="all_pictures contenedor">
+
+        <!-- Controles y titulos -->
+    <div class="box_control_and_tittle">
+      <h3>Items </h3>
+      <div class="indicator_point"></div>
+        </div>
+        <!-- /Controles y titulos -->    
+    
+        <!-- Contenedor principal --> 
+    <div class="main_box">
+          
+            <button class="arrow_izq" role="button" id="arrow_izq"><i class="fa fa-arrow-left"></i>
+            </button>
+
+            <!-- Contenedor Carrousel-->
+            <div class="carrousel_box">
+
+                <!-- Carrousel-->
+                <div class="carrousel">
+
+                    <div class="pelicula">
+                        <a href="#">
+                            <img src="/media/{{a.image}}" alt="...">  
+                        </a>
+                    </div> 
+
+                    <div class="pelicula">   
+                        <a href="#">
+                            <img src="/media/{{a.image_1}}" alt="...">  
+                            </a>
+                    </div> 
+
+                    <div class="pelicula">     
+                        <a href="#">
+                            <img src="/media/{{a.image_2}}" alt="...">  
+                        </a>
+                    </div> 
+
+                    <div class="pelicula">     
+                        <a href="#">
+                            <img src="/media/{{a.image_3}}" alt="...">  
+                        </a>
+                    </div> 
+
+                    <div class="pelicula">     
+                        <a href="#">
+                            <img src="/media/{{a.image_4}}" alt="...">  
+                        </a>
+                    </div> 
+
+                    <div class="pelicula"> 
+                        <a href="#">
+                            <img src="/media/{{a.image_5}}" alt="...">  
+                        </a>
+                    </div>
+
+                </div>
+                <!-- /Carrousel-->
+
+            </div>
+            <!-- /Contenedor Carrousel-->
+            
+            <button class="arrow_der" role="button" id="arrow_der"><i class="fa fa-arrow-right"></i>
+            </button>
+
+      </div>
+        <!-- /Contenedor principal --> 
+
+    </div>
+    <!-- /Recomendaciones -->
+    </section>
+
+  </div> 
+
+    <!-- /Item List -->
+    {% endfor %}    
+
+
+    {% endblock %}
+    <!---END BLOCK ITEM--> 
+    {% block pagination%}  
+        <div class="pagination">
+          <span class="step-links">
+          
+          {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+
+          <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+          
+          </span>
+       </div>              
+      {% endblock %} 
+    <div class="card-footer">
+      {% block to_new%} 
+        <a href=" {% url 'new_item' %}"> {% endblock%}
+          <button type="submit"  class="btn btn-primary btn-flat">
+            <i class="fas fa fa-save"></i>
+              Add New 
+          </button>
+        </a>
+      {% block button_one %}
+    <a href="{% url 'all_item_by_list' %}">
+          <button class="btn btn-info mx-3" type="button" style ='color:#fff';>
+            <i class="fa fa-file"></i>
+            List views
+          </button>
+        </a>
+    {% endblock %}
+
+    </div>
+    
+ 
+    </section>
+    <!--/ Start Section-->
+  {% endblock  %}
+  
+  <!---END BLOCK CONTENT-->  
+    
+    
+              
+               
+                

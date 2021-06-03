@@ -1,0 +1,82 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Name </th> 
+    <th>Operation </th> 
+    <th>Brand </th>
+    <th>Subcategory</th>
+    <th>EAN </th> 
+    <th>Status </th> 
+    <th>Sold </th> 
+    <th>Active </th> 
+    <th>Price </th> 
+    <th>Purchase Price </th> 
+    <th>Tax </th> 
+    <th>Color </th> 
+    <th>Size </th> 
+    <th>See/Update</th> 
+    <th>Delete</th>
+    <th>Invoice</th> 
+    
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.item_name}}</td>  
+      <td>{{ a.operation}}</td> 
+      <td>{{ a.brand}}</td>  
+      <td>{{ a.subcategory}}</td>
+      <td>{{ a.ean}}</td>  
+      <td>{{ a.status}}</td> 
+      <td>{{ a.sold}}</td>  
+      <td>{{ a.active}}</td>  
+      <td>{{ a.price}}</td>  
+      <td>{{ a.purchase_price}}</td> 
+      <td>{{ a.tax}}</td>  
+      <td>{{ a.color}}</td> 
+      <td>{{ a.size}}</td>  
+        
+      <td>
+        <a href="{% url 'update_item' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_item' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td> 
+      <td>
+        <a href="{% url 'new_invoice' a.id %}">
+          <button class="bt_update" type="submit" style ='color:blue';>
+            <i class="fa fa-print"></i>
+            
+          </button>
+        </a>
+      </td>  
+                     
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+                      
+    {% block to_new%}
+       <a href=" {% url 'new_item' %}">
+    {% endblock %}
+    {% block button_one %}
+    <a href="{% url 'all_item' %}">
+          <button class="btn btn-info mx-3" type="button" style ='color:#fff';>
+            <i class="fa fa-photo"></i>
+            Slide views
+          </button>
+        </a>
+    {% endblock %}

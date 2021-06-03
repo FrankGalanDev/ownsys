@@ -1,0 +1,27 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+        
+        {{form.categdoc_name}} 
+      
+      {% endblock %} 
+                       
+      {%block name %} 
+
+        {{categdoc.categdoc_name}}
+
+      {% endblock %} 
+                           
+      {%block return %}
+        <a href="{% url 'all_categdoc' %}" style="color:white" >
+          <i class=" fa fa-undo"></i>
+          Return
+        </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section>

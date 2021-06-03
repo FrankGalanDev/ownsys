@@ -1,0 +1,22 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+
+        {{ form.username }}                
+      {% endblock %}
+
+      {%block name %} {{user.username }} {% endblock %}  
+                           
+      {%block return %}
+      <a href="{% url 'all_user' %}" style="color:white" >
+        <i class=" fa fa-undo"></i>
+        Return
+       </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section> 

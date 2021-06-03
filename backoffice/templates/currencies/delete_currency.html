@@ -1,0 +1,24 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+
+        {{ form.currency_name }}                
+      {% endblock %}
+
+      {%block name %} {{currency.currency_name }} {% endblock %}  
+                           
+      {%block return %}
+      <a href="{% url 'all_currency' %}" style="color:white" >
+        <i class=" fa fa-undo"></i>
+        Return
+       </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section> 
+      
+ 

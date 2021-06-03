@@ -1,0 +1,61 @@
+{% extends 'layouts/tables.html'%}
+
+{% block columns%}
+
+    <th>Target by</th>  
+    <th>Executer</th>   
+    <th>Section</th> 
+    <th>Type</th>  
+    <th>Task Name</th> 
+    <th>Posted</th> 
+    <th>Updated</th> 
+    <th>Actived</th> 
+    <th>Done</th> 
+    <th>See/Update</th> 
+    <th>Delete</th> 
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.owner}}</td>  
+      <td>{{a.executer}}</td>   
+      <td>{{a.section }}</td> 
+      <td>{{a.task_type }}</td> 
+      <td class="accordion-toggle"  data-toggle="collapse" data-target="#rowcollapse_{{a.id}}">><i class="fa fa-info-circle" style="color:blue;"></i>{{a.task_name }}</td>  
+     
+      <td>{{a.created_at}}</td>  
+      <td>{{a.updated_at}}</td>  
+      <td>{{a.is_active}}</td>  
+      <td>{{a.is_done}}</td> 
+      <td>
+        <a href="{% url 'update_task' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_task' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>            
+    </tr>
+
+    <tr class="collapse" id="rowcollapse_{{a.id}}" >
+      <td colspan="12"  >
+        <div>
+       {{a.tittle}}: <br>{{a.task_description}}
+      </div>
+        
+</td>
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+    {% block to_new%}
+       <a href=" {% url 'new_task' %}">
+    {% endblock %}

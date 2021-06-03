@@ -1,0 +1,65 @@
+{% extends 'layouts/tables.html'%}
+{% load static %}
+
+    {% block content %}
+     
+     <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Users</li>
+          </ul>
+        </div>
+      </div>
+  {% for a in object_list  %}    
+    
+
+
+ <section class="dashboard-header section-padding" style=" border:2px solid blue; margin-bottom:15px;">
+        <div class="container-fluid">
+          <div class="row d-flex align-items-md-stretch">
+
+              <div class="col-lg-3" >
+                 
+                <img  src='{{a.profile.photouser.url}}'  alt="{{a.user.username}}" class="img-fluid  user_imag rounded-circle">
+                  
+              </div>
+ 
+            
+                 <div class="col-lg-9  ">
+                  <h2 class="h3 " style = "color:#000000;font-weight:bold;">Name:</h2>
+                  <h2 style = "color:gray; font-weight:bold; font-style:italic;"> {{a.username | default:_('Jacket')}}</h2>
+                  <hr>
+                  <h3 style = "color:#000000;font-weight:bold;"> First name:</h3>
+                  <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.first_name | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text. ')}}</p>
+                  <hr>
+                  <h3 style = "color:#000000;font-weight:bold;"> Email:</h3>
+                  <p style = "color:gray; font-weight:bold; font-style:italic;"> {{ a.email | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text. ')}}</p>
+                  <hr>
+                  <h3 style = "color:#000000;font-weight:bold;"> Section:</h3>
+                  <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.profile.section | default:_('looked up one of the more obscure Latin words, consectetur.')}}</p>
+                  <hr>
+                  <h3 style = "color:#000000;font-weight:bold;"> Position:</h3>
+                  <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.profile.cargo | default:_('looked up one of the more obscure Latin words, consectetur.')}}</p>
+                  <hr>
+                  <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> Notas:</h3>
+                  <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.profile.notas | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text. ')}}</p>
+                  <hr>
+                </div>
+
+               </div>
+          </div>     
+    </section>
+    {% endfor %}                
+
+             
+
+           
+
+
+    
+    {% endblock  %}
+
+              
+               
+                

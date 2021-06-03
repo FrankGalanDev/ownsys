@@ -1,0 +1,53 @@
+{% extends 'layouts/backoffice.html' %}
+
+{% block content %}
+
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%  url 'backoffice' %}" >Home</a></li>
+            <li class="breadcrumb-item active">Forms</li>
+          </ul>
+        </div>
+      </div>
+      <section class="forms">
+        <div class="container-fluid">
+          <!-- Page Header-->
+          <header> 
+            <h1 class="h3 display">{% block tittle %} Forms to new {% endblock %}          </h1>
+          </header>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4>{% block table_tittle %} New item {% endblock %}</h4>
+                </div>
+                <div class="card-body">
+                  <p>{% block table_subtittle %} Add here your new item  {% endblock %}.</p>
+
+                  {% block form %}
+                  <form method:POST action:'.'>
+                    {% csrf_token %}
+                    {{ form}}
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input type="email" placeholder="Name" class="form-control">
+                    </div>
+                    <div class="form-group">       
+                      <label>Email</label>
+                      <input type="password" placeholder="Password" class="form-control">
+                    </div>
+
+                    <div class="card-footer">       
+                      <button type="submit"  class="btn btn-primary btn-flat">
+                        <i class="fas fa-save"></i>
+                        Add New
+                      </button>
+                    </div>
+                  </form>
+                  {% endblock %}
+
+                </div>
+              </div>
+            </div>
+{% endblock %}           

@@ -1,0 +1,75 @@
+{% extends 'access_layouts.html'%}
+{%load static %}
+
+{%block content%}
+   
+    <div class="page login-page  ">
+      <div class="container">
+        <div class="form-outer text-center d-flex align-items-center">
+          
+          <div class="form-inner">
+
+            <div class="logo text-uppercase">
+              <span>
+              {% block company_tittle %}
+                Mys Company
+              {% endblock %} 
+              </span>
+              <strong class="text-primary">
+              {% block page_tittle %}
+                Dashboard
+              {% endblock  %}
+              </strong>
+            </div>
+
+            <p>{% block login_intro %}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+              {% endblock  %}
+            </p>
+            {% block form%}
+            <form action="." method="POST" class="text-left form-validate">
+              {% csrf_token %}
+              <!--input para retornar a la vista que esta consultando si intenta acceder sin  estar logueado y se loguea-->
+              <input type="hidden" name="next"  value= "{{ next}}" > 
+
+              <div class="form-group-material">
+               
+                <label for="login-username" class="label-material">Username</label>
+                {{form.username}}
+              </div>
+              
+              <div class="form-group-material">
+              
+                <label for="login-password" class="label-material">Password</label>
+                {{ form.password}}
+              </div>
+              
+              <div class="card-footer">       
+                <button type="submit"  id="login" class="btn btn-primary btn-flat">
+                 <i class="fa fa-sign-in-alt"></i>
+                Login 
+            </button>
+              
+              {% if form.erors %}
+                var errors = '';
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        errors ='{{ error}}'\n;
+
+                    {%endfor%}
+                {%endfor%}
+                {% for error  in form.non_field_errors %}
+                    errors ='{{ error}}'\n;
+
+                {%endfor%}
+              {% endif %}
+            </form>
+            <a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="#" class="signup">Signup</a>
+            <small> Continuing visiting the site </small><a href="{% url 'home'%}" class="signup">BACK TO SITE</a>
+            {% endblock%}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+{% endblock %}

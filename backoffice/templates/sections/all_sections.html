@@ -1,0 +1,49 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Name</th>  
+    <th>Phone</th>   
+    <th>web </th> 
+    <th>Postal code</th>   
+    <th>Country</th> 
+    <th>Address</th>  
+    <th>Description</th> 
+    <th>See/Update</th> 
+    <th>Delete</th>  
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.section_name}}</td>  
+      <td>{{a.phone}}</td>   
+      <td>{{a.web }}</td> 
+      <td>{{a.postal_code}}</td>   
+      <td>{{a.country}}</td> 
+      <td>{{a.address}}</td>  
+      <td>{{a.section_description}}</td> 
+      <td>
+        <a href="{% url 'update_section' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_section' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>                
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+    {% block to_new%}
+       <a href=" {% url 'new_section' %}">
+    {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+
+        {{ form.subcategoryitem_name }}                
+      {% endblock %}
+
+      {%block name %} {{subcategoryitem.subcategoryitem_name }} {% endblock %}  
+                           
+      {%block return %}
+      <a href="{% url 'all_subcategoryitem' %}" style="color:white" >
+        <i class=" fa fa-undo"></i>
+        Return
+       </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section> 

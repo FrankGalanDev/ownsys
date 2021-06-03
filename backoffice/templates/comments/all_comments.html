@@ -1,0 +1,63 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+ 
+
+    {% block columns%}
+
+    <th>User</th>  
+    <th>Post</th>   
+    <th>Topic</th> 
+    
+    <th>Posted</th> 
+    <th>Updated at</th>
+    <th>See/Update</th> 
+    <th>Delete</th>   
+    
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.user}}</td>  
+      <td>{{a.post}}</td>   
+      <td class="accordion-toggle"  data-toggle="collapse" data-target="#rowcollapse__{{a.id}}"><i class="fa fa-info-circle" style="color:blue;"></i>{{a.topic }}
+      </td>
+      
+      <td>{{a.created_at}}</td> 
+      <td>{{a.updated_at}}</td> 
+      <td>
+        <a href="{% url 'update_comment' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_comment' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>   
+                 
+    </tr>
+
+    <tr class="collapse" id="rowcollapse__{{a.id}}" >
+      <td colspan="12"  >
+        <div>
+       <h4 style="color:red;">{{a.topic}}:</h4><p style="font-size:1.2em;"> {{a.commentext}}</p>
+      </div>
+        
+</td>
+    </tr>
+    
+   
+
+                  {% endfor%}
+    {% endblock%}
+  
+  {% block to_new%}
+       <a href=" {% url 'new_comment' %}">
+    {% endblock %}

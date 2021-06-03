@@ -1,0 +1,173 @@
+
+
+
+body{
+	background-color: gray;
+}
+
+header{
+	padding:30px 0;
+}
+
+header .contenedor{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+.contenedor{
+	width:90%;
+	margin:auto;	
+}
+
+.box_control_and_tittle{
+	display:flex;
+	justify-content: space-between; /*colocando a los lados*/
+	align-items: center;
+	
+}
+
+.box_control_and_tittle h3{
+	color:#000;
+	font-size: 30px;	
+	
+}
+
+.box_control_and_tittle .indicator_point button{
+	background: white;
+	height: 3px;
+	width: 10px;
+	cursor: pointer;
+	margin-right: 2px;
+	align-items: center;
+}
+
+
+.box_control_and_tittle h3{
+	color:#000;
+	font-size: 30px
+	
+	
+}
+
+.indicator_point button{
+	background: white;
+	height: 3px;
+	width: 10px;
+	cursor: pointer;
+	margin-right: 2px;
+	align-items: center;
+}
+.indicator_point button:hover{
+	background: red;
+	
+}
+.indicator_point button.activo{
+	background-color: black;
+	
+}
+
+.all_pictures{
+	margin:70px
+}
+
+.all_pictures .main_box{
+	display:flex;
+	align-items: center; /* centrando los verticalmente*/
+	position: relative;
+}
+
+.all_pictures .main_box .arrow_izq,
+.all_pictures .main_box .arrow_der{
+	position: absolute;
+	border:none;
+	background: rgba(0,0,0,0.3);
+	font-size:40px;
+	height:20%;
+	top: calc(50% - 20%);
+	line-height: 40px;
+	width: 50px;
+	color:#fff;
+	cursor: pointer;
+	z-index: 500;
+	transition: .2s ease all;
+
+
+}
+
+
+.all_pictures .main_box .arrow_izq:hover,
+.all_pictures .main_box .arrow_der:hover{
+	background: rgba(0,2,1,.9);
+}
+
+
+
+.all_pictures .main_box .arrow_izq{
+	left:0;
+
+}
+.all_pictures .main_box .arrow_der{
+	right:0;
+
+}
+
+.all_pictures .carrousel_box {
+	width: 100%;
+	padding:20px 0;
+	scroll-behavior: smooth;
+	overflow: hidden;
+}
+
+.all_pictures .carrousel_box .carrousel{
+	display:flex;
+	flex-wrap: nowrap;	
+}
+
+.all_pictures .carrousel_box .carrousel .pelicula.hover{
+transform: scale(1.2);	
+transform-origin:center;
+}
+
+.all_pictures .carrousel_box .carrousel .pelicula{
+min-width: 20%;	
+transition: .3s ease all;
+box-shadow: 5px 5px 10px rgba(0,0,0,0.5)
+}
+
+
+
+.all_pictures .carrousel_box .carrousel .pelicula img{
+	width: 100%;
+	vertical-align: top;
+}
+
+/*-----MEDIA QUERIES*/
+@media screen and (max-width: 798px){
+	.contenedor{
+		flex-direction:column;
+		text-align: center;
+	}
+	.picture_focused{
+		max-width: 100%;
+
+	}
+    .all_pictures .carrousel_box{
+		overflow: visible;
+
+	}
+
+	 .all_pictures .carrousel_box .carrousel{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+    }
+
+    .all_pictures .indicator_point,
+    .all_pictures .arrow_izq,
+    .all_pictures .arrow_der,{
+    	display:none;
+    }
+
+}

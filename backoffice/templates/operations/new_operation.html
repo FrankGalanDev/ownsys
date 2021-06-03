@@ -1,0 +1,30 @@
+{% extends 'layouts/new.html'%}
+
+    {% block form %}
+                  
+      <form  action =" " method ="POST" enctype="multipart/form-data" class= " col-lg-12">
+
+        {% csrf_token %}
+         {{ form.as_p}}
+          <div class="card-footer">       
+            
+            <button type="button"  class="btn btn-dark btn-flat" >
+              <a href="{% url 'all_operation' %}" >
+               <i class="fas fa fa-undo"></i>
+                Return 
+              </a>
+            </button>
+
+             <button type="submit"  class="btn btn-primary btn-flat">
+              <i class="fas fa fa-save"></i>
+                Add New 
+            </button>
+          </div>             
+                          
+ 
+    {% endblock %}
+      
+ 
+
+   
+    

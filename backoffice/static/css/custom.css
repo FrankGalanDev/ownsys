@@ -1,0 +1,10 @@
+/* your styles go here */
+.login-page,
+.register-page {
+  width: 100%;
+  background: #000;
+  background-image:"./images/bg_login.jpg";
+  min-height: auto;
+  padding-bottom: 0;
+}
+

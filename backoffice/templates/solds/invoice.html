@@ -1,0 +1,137 @@
+{% extends 'layouts/factura.html'%}
+{%load static %}
+
+{% block content%}
+	<section>
+		
+		<form method="POST">
+			{% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        
+        
+		<div>
+			<img  class="i_center" src= {% static "logos/logo_ovalado.png" %} alt="logo invoice"style="width 150px">
+		</div>
+		<div class="col-md-5">
+			<h2 class="" style= "left:12px; font-size:40px; margin-top:12px; margin-bottom:100px;"> 
+			    {{tittle |default:_('INVOICES') }} 
+		    </h2>
+		</div>
+        
+		<div style="display:flex" style="justify-content:space_between;margin-top:40px;">
+			<div class="col-md-5 left_side" style="align-items:center;border-top: 2px solid #DF4E05; border-bottom: 2px solid #DF4E05">
+				<h4 style= "left:12px; margin-top:12px; margin-bottom:20px; align-self:center">
+
+				    {{tittle_to|default:_('TO:') }} <input name="to" id="to"   value="{{a.customer}}">
+				</h4>
+			</div>
+			 <div class="col-md-2 " style="align-items:center;">
+	        	 
+			</div>
+	        <div class="col-md-5 left_side" style="align-items:center; border-bottom: 2px solid #DF4E05">
+	        	<h4 style= "left:12px; margin-top:12px; margin-bottom:20px;">
+	        	    {{tittle_from |default:_('FROM:') }}
+	        	    <input name="from" id="from"   value="{{ company_name}}" placeholder="LocalSys">
+	        	</h4>
+			</div>
+		</div>
+		<div style= display= "display:flex; flex-direction:column; align-items:flex-start">	
+
+			<div class="col-md-5 left_side" style="align-items:center; border-bottom: 2px solid #DF4E05">
+				<h4 style= "left:12px; margin-top:12px; margin-bottom:20px;">{{tittle_invoice_number|default:_('INVOICE NUMBER:')}}   
+					<input name="invoice_number" id="invoice_number"   value="{{invoice_number}}" placeholder="F-123456">
+				</h4>
+			</div>
+
+			<div class="col-md-5 left_side" style="align-items:center; border-bottom: 2px solid #DF4E05">
+				<h4 style= "left:12px; margin-top:12px; margin-bottom:20px;">{{tittle_issued |default:_('ISSUED:') }}   
+				<input name="issued" id="issued"   value="{{ a.created_at}}" placeholder="2021 January 1">
+			</h4>
+		    </div>
+
+		    <div class="col-md-5 left_side" style="align-items:center; border-bottom: 2px solid #DF4E05">
+				<h4 style= "left:12px; margin-top:12px; margin-bottom:20px;">{{tittle_valid_until|default:_('DUE:')}}
+				<input name="valid_until" id="valid_until"   value="{{ a.valid_until}}" placeholder="2021 March 1">
+			    </h4>
+		    </div>
+		</div>
+
+		<div style= "display:flex; flex-direction:row; align-items:flex-start; margin-top:200px; border-bottom: 2px solid #DF4E05; margin-bottom:20px;">	
+			<div class="col-md-5"> 
+				<h4 class="text-center">{{tittle_description|default:_('Description')}}</h4>
+			</div>
+			<div class="col-md-2">
+				<h4 class="text-center">{{tittle_quantity|default:_('Quantity')}}</h4>
+			</div>
+			<div class="col-md-2">
+				<h4 class="text-center">{{tittle_price|default:_('Unit Price')}}</h4>
+		    </div>
+		    <div class="col-md-1">
+				<h4 class="text-center">{{tittle_tax|default:_('Tax')}}</h4>
+		    </div>
+		    <div class="col-md-2">
+				<h4 class="text-center">{{tittle_amount|default:_('Amount')}}</h4>
+		    </div>
+		</div>
+		
+		<div style= "display:flex; flex-direction:row; align-items:flex-start; margin-top:12px; margin-bottom:20px; border-bottom: 2px solid #DF4E05;">	
+			<div class="col-md-5">
+				<p class="text-center"> <input id="item_sold" name="item_sold" value="{{a.sold_item}}" placeholder="Special Product" </p>
+			</div>
+			<div class="col-md-2">
+				<input  type="number" placeholder="Quantity">
+			</div>
+			<div class="col-md-2">
+				<p class="text-center"> <input id="price_item" name="item_price" value="{{a.item.price}}" placeholder="120" </p>
+		    </div>
+		    <div class="col-md-1">
+				<p class="text-center"> <input id="tax_item" name="tax_item" value="{{form.tax}}" placeholder="120"> </p>
+		    </div>
+		    <div class="col-md-2">
+				<p class="text-center"> <input id="amount_item" name="amount_item" value="" placeholder="726" </p>
+		    </div>
+		</div>
+
+	    <div  style="display:flex; flex-direction:column; align-items:flex-end">
+
+		    <div  class="col-md-6" style= "display:flex; justify-content:flex-end; align-items:center; margin-top:12px; margin-bottom:20px; border-bottom: 2px solid #DF4E05">	
+				<div class="col-md-8">
+					<h4>{{tittle_tax|default:_('Subtotal')}}</h4>
+				</div>
+				<div class="col-md-4">
+					<input name="subtotal" id="subtotal" value= "{{sold_item}}" placeholder="600">
+				</div>
+			</div>
+			
+			<div class="col-md-6" style="display:flex; justify-content:flex-end; align-items:center; margin-top:12px; margin-bottom:20px; border-bottom: 2px solid #DF4E05">	
+			
+				<div class="col-md-8">
+					<h4>{{tittle_total_sales_tax|default:_('Total Sales tax')}}</h4>
+				</div>
+				<div class="col-md-4">
+					<input name="total_sales_tax" id="total_sales_tax" value= "" placeholder="126">
+				</div>
+			    
+			</div>
+
+			<div class="col-md-6" style="display:flex; justify-content:flex-end; align-items:center; margin-top:12px; margin-bottom:20px;">	
+			
+				<div class="col-md-8">
+					<h4>{{tittle_total_amount_due|default:_('Amount DUE')}}</h4>
+				</div>
+				<div class="col-md-4">
+					<h3 style="font-size:35px; font-weight:bold; color:#057CDF;">
+						<input name="amount_due" id="amount_due" value= "" placeholder="726"> </h3>
+				</div>
+			    
+			</div>
+				
+		</div>
+	    <div>
+		    <img  class="" src={% static "logos/thankyou.png" %} alt="logo invoice" style="left:0;width:350px; margin-top:-180px;z-index:-10">
+		</div>
+	</form>
+         <button  class="btn btn-success" type="submit">Save</button>
+	</section>
+{% endblock %}

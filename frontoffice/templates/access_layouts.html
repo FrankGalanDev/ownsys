@@ -1,0 +1,131 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Corporated | Mis Clientes.SL</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href={% static "vendor/bootstrap/css/bootstrap.min.css" %}>
+    <!-- Google fonts-->
+    <link rel="stylesheet" href= "https://fonts.googleapis.com/css?family=Poppins:300,400,700&amp;display=swap">
+    <!-- Modal Video-->
+    <link rel="stylesheet" href={% static "vendor/modal-video/css/modal-video.min.css"%}>
+    <!-- Leaflet-->
+    <link rel="stylesheet" href={% static "vendor/leaflet/leaflet.css"%}>
+    <!-- Owl Carousel-->
+    <link rel="stylesheet" href={% static "vendor/owl.carousel2/assets/owl.carousel.min.css"%}>
+    <link rel="stylesheet" href={% static "vendor/owl.carousel2/assets/owl.theme.default.min.css"%}>
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href={% static "css/style.default.css" id="theme-stylesheet"%}>
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href={% static "css/custom.css"%}>
+    <!-- Favicon-->
+    <link rel="shortcut icon" href={% static "img/favicon.ico" %}>
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+   
+    <!-- navbar-->
+    <header class="header">
+      <div class="top-bar bg-dark text-white">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 bg-primary py-2 text-center text-lg-left">
+              <p class="mb-0 text-small"><i class="fas fa-clock mr-2"></i>Opening hours: Mon - Sat 9:00 - 18:00</p>
+            </div>
+            <div class="col-lg-8 text-right py-2 text-center text-lg-right">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a class="font-weight-normal text-small reset-anchor" href="#"><i class="fas fa-mobile mr-2"></i>+535 421 895 6523</a></li>
+                <li class="list-inline-item">|</li>
+                <li class="list-inline-item"><a class="font-weight-normal text-small reset-anchor" href="#"><i class="fas fa-envelope mr-2"></i>Local Sys.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light py-3 bg-white shadow-sm">
+        <div class="container"><a class="navbar-brand" href="/"><img src={% static "img/logo.png" alt="" width="200" %}></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-2 active"><a class="nav-link text-uppercase" href="/">Home </a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-uppercase" href="/about">About</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-uppercase" href="{% url 'contact' %}">Contact</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-uppercase" href="/admin"> Account</a></li>
+              <li class="nav-item ml-2 dropdown"><a class="nav-link text-uppercase dropdown-toggle pr-0" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                <div class="dropdown-menu mt-lg-4" aria-labelledby="navbarDropdownMenuLink"><a class="dropdown-item font-weight-bold text-small" href="/index">Home</a><a class="dropdown-item font-weight-bold text-small" href="/about">About</a><a class="dropdown-item font-weight-bold text-small" href="contact.html">Contact                </a></div>
+              </li>
+              <li class="nav-item ml-lg-3 pl-lg-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'contact' %}">Request a quote</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    {%block content%}
+
+    {%endblock%}
+   
+  
+ 
+    <footer class="bg-dark">
+      
+      <div class="bg-darker py-4">
+        <div class="container text-center">
+          <!-- You are completely free to use this template for your personal use or as a work for your client as long as you keep the link at the template footer pointing to our partner and us.-->
+          <!-- If you would prefer removing the backlink from the theme footer, please purchase the attribution-free license at the theme page at https://bootstraptemple.com.-->
+          <p class="mb-0 text-muted text-small"> Usted esta visitando esta pagina a las: {% now "h:m:s" %} del {% now "d/m/Y " %} </p>
+        </div>
+        <div class="container text-center">
+          <!-- You are completely free to use this template for your personal use or as a work for your client as long as you keep the link at the template footer pointing to our partner and us.-->
+          <!-- If you would prefer removing the backlink from the theme footer, please purchase the attribution-free license at the theme page at https://bootstraptemple.com.-->
+          <p class="mb-0 text-muted text-small">&copy; All rights reserved. Template designed by <a href="https://frankgalandev.com/">Frank Galan</a>. </p>
+        </div>
+      </div> 
+
+    </footer>
+   
+    <!-- JavaScript files-->
+    <script src={% static "vendor/jquery/jquery.min.js" %}></script>
+    <script src={% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+    <script src={% static "vendor/owl.carousel2/owl.carousel.min.js" %}></script>
+    <script src={% static "vendor/modal-video/js/modal-video.js" %}></script>
+    <script src={% static "vendor/leaflet/leaflet.js" %}></script>
+    <script src={% static "js/front.js" %}></script>
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      // this is set to BootstrapTemple website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
+      
+    </script>
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </body>
+</html>

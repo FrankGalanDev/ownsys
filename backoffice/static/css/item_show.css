@@ -1,0 +1,50 @@
+
+.item_line{
+	font-size:1.2em !important;
+	margin:10px;
+	line-height: 16px
+}
+
+
+.slider_container{
+	width:95%;
+	margin: auto;
+}
+
+.slider_main {
+margin-bottom: 70px;
+
+}
+/* SLIDER */
+.slider_main .slider_container{
+display: flex;
+align-items: center;
+position:relative;
+
+}
+/* ARROWS */  
+#left_arrow ,#right_arrow {
+position: absolute;
+left:0;
+border: none;
+font-size: 25px;
+background: rgba(0,0,0,0.4);
+height:5%;
+top: calc(50%-40%);
+line-height: 25px;
+width:35px;
+color:#fff;
+cursor: pointer;
+z-index: 500;
+transition: .2 ease all;
+}
+
+
+
+#left_arrow{
+	left:0;
+}
+
+#right_arrow{
+	right:0;
+}

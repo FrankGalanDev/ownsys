@@ -1,0 +1,58 @@
+  {% extends 'layouts/backoffice.html'%}        
+
+  {% block content %}
+          <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h4>{%  block table_tittle%} {{table_tittle}} {% endblock %}   </h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                   
+                      <thead>
+                        <tr>
+            {%block columns%}                 
+                        
+                          <th>Id</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>First Name</th>
+                          <th>Ver</th>
+                          <th>Modificar</th>
+                          <th>Eliminar</th>  
+             {% endblock%}
+                        </tr>
+                      </thead>
+
+             
+                      <tbody>
+            {%block rows %}            
+                        {%for a in sections %}
+
+                      <tr id="linea"<?php echo $color ?>>
+                    <td class="sorting_1">{{  .id}}</td>
+               
+                    <td class="mailbox-messages mailbox-name"><a href="javascript:void(0);" onclick="mostrarficha({{  }})"  
+                    style="display:block"><i class="fa fa-file-text"></i> {{ .id }}</a></td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+
+
+                    <td><button class="btn  btn-skin-green btn-xs" data-toggle="modal" data-target="#modal-default"><i class="fa fa-fw fa-eye"></i>Show</button></td> 
+                    <td><button class="btn  btn-skin-green btn-xs open-modal_veh" data-toggle="modal" data-target="#modal-info" onclick="update({{ .id }})" value="{{}}"><i class="fa fa-fw fa-wrench"></i></button></td>
+                    <td><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-danger"><i class="fa fa-trash">{{delete |default:_('Delete')}}</i></button></td>
+
+                 </tr>    
+                       
+                  {% endfor%}
+            {% endblock%}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+  {%endblock%}

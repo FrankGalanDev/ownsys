@@ -1,0 +1,24 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+
+        {{ form.document_name }}                
+      {% endblock %}
+
+      {%block name %} {{documt.document_name }} {% endblock %}  
+                           
+      {%block return %}
+      <a href="{% url 'all_documt' %}" style="color:white" >
+        <i class=" fa fa-undo"></i>
+        Return
+       </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section> 
+      
+ 

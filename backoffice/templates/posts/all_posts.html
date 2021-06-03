@@ -1,0 +1,61 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Name</th>  
+    <th>Category</th>   
+    <th>Tittle</th>   
+    <th>Posted at</th> 
+    <th>Updated at</th>  
+    <th>Draft</th> 
+    <th>Url</th> 
+    <th>Views</th>
+    <th>See/Update</th> 
+    <th>Delete</th>  
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.user}}</td>  
+      <td>{{a.categpost}}</td>   
+      <td class="accordion-toggle"  data-toggle="collapse" data-target="#rowcollapse_{{a.id}}"><i class="fa fa-info-circle" style="color:blue;"></i>{{a.tittle}}</td>  
+      <td>{{a.created_at}}</td> 
+      <td>{{a.updated_at}}</td>  
+      <td>{{a.is_draft}}</td> 
+      <td>{{a.url}}</td> 
+      <td>{{a.views}}</td> 
+      <td>
+        <a href="{% url 'update_post' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_post' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>                
+    </tr>
+
+    <tr class="collapse" id="rowcollapse_{{a.id}}" >
+      <td colspan="12"  >
+        <div>
+       {{a.tittle}}: <br>{{a.posttext}}
+      </div>
+        
+</td>
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+
+    {% block to_new%}
+       <a href=" {% url 'new_post' %}">
+    {% endblock %}

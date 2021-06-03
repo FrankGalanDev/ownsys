@@ -1,0 +1,69 @@
+{% extends 'access_layouts.html'%}
+{%load static %}
+
+{%block content %}
+
+    <div class="page login-page">
+      <div class="container">
+        <div class="form-outer text-center d-flex align-items-center">
+          <div class="form-inner">
+            <div class="logo text-uppercase">
+              <span>
+                {% block company_tittle %}
+                My Company
+              {% endblock %} 
+             /span>
+              <strong class="text-primary">
+              {% block page_tittle %}
+                Dashboard
+              {% endblock  %}
+              </strong>
+            </div>
+              <p>{% block login_intro %}L
+              orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+             {% endblock  %}
+            </p>
+            {% block form%}
+            <form action="." method="POST" class="text-left form-validate">
+               {% csrf_token %}
+              <div class="form-group-material">
+            <!--    <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">-->
+                <label for="register-username" class="label-material">Username</label>
+              </div>
+              <div class="form-group-material">
+            <!--    <input id="register-email" type="email" name="registerEmail" required data-msg="Please enter a valid email address" class="input-material">-->
+                <label for="register-email" class="label-material">Email Address      </label>
+              </div>
+              <div class="form-group-material">
+                <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
+                <label for="register-password" class="label-material">Password        </label>
+              </div>
+              <div class="form-group terms-conditions text-center">
+                <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="form-control-custom">
+                <label for="register-agree">I agree with the terms and policy</label>
+              </div>
+               <div class="card-footer">       
+                <button type="submit"  id="login" class="btn btn-primary btn-flat">
+                 <i class="fa fa-sign-in-alt"></i>
+                Register 
+            </button>
+              
+              {% if form.erors %}
+                var errors = '';
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        errors ='{{ error}}'\n;
+
+                    {%endfor%}
+                {%endfor%}
+                {% for error  in form.non_field_errors %}
+                    errors ='{{ error}}'\n;
+
+                {%endfor%}
+              {% endif %}
+            </form>
+            <a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="#" class="signup">Signup</a>
+            <small> Continuing visiting the site </small><a href="{% url 'home'%}" class="signup">BACK TO SITE</a>
+            </form>
+      {%endblock  %}       
+{%endblock  %} 

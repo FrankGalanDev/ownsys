@@ -1,0 +1,46 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Name</th>  
+    <th>User</th>   
+    <th>Access Key</th>   
+    <th>Details</th>  
+    <th>Description</th> 
+    <th>See/Update</th> 
+    <th>Delete</th>
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.platform_name}}</td>  
+      <td>{{a.user_platf}}</td>   
+      <td>{{a.access_key}}</td>   
+      <td>{{a.api_details}}</td> 
+      <td>{{a.api_description}}</td> 
+       <td>
+        <a href="{% url 'update_brand' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_brand' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>   
+                    
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+     {% block to_new%}
+       <a href=" {% url 'new_platform' %}">
+    {% endblock %}   

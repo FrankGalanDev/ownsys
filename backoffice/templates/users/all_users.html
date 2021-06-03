@@ -1,0 +1,133 @@
+{% extends 'layouts/backoffice.html'%}
+{% load static %}
+<section>  
+  {% block content %}
+   
+  <div class="breadcrumb-holder">
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'backoffice' %}">Home</a></li>
+        <li class="breadcrumb-item active">Users </li>
+      </ul>
+    </div>
+  </div>
+  
+  {% for a in object_list  %}    
+
+<div class="dashboard-header section-padding" style=" border:2px solid blue; margin-bottom:15px;">
+  <div class="container-fluid todo_item">
+    <div class="row d-flex align-items-md-stretch">
+      <div class="col-lg-3" >                
+        <img class="avatar_user" src='/media/{{a.photouser}}' alt="{{a.username}}" class="img-fluid  user_imag rounded-circle">
+          <a href="{% url 'update_user' a.id %}">
+            <button  class="bt_update" type="submit"><i class="fa fa-eye"></i>           
+            </button>
+          </a>
+      
+          <a href="{% url 'delete_user' a.id %}">
+            <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+            </button>
+          </a>
+                  
+      </div>
+
+      <div class="col-lg-9  ">
+        <h3 class="h3 " style = "color:#000000;font-weight:bold;">Username:</h3><p style = "color:gray; font-weight:bold; font-style:italic; font-size:1.3em;"> {{a.username | default:_('Jenny')}}</p>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          First name: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.first_name | default:_('Doe')}}</p>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Last name: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.last_name | default:_('Gilmore')}}</p>
+        <hr>
+
+        <div style="display:flex; align-items:baseline;">
+          <hr>
+          <h5 style = "color:#000000;font-weight:bold;">
+            Superuser: 
+          </h5>
+          <input  id="superuser" type="checkbox" value="{{a.is_superuser}}" disabled>
+         
+          <hr>
+          <h5 style="color:#000000;font-weight:bold;">
+            Groups: 
+          </h5>
+          <input class="col-md-1"value="{{a.groups| default:_('uno')}}" disabled="">
+          <hr>
+          <h5 style = "color:#000000;font-weight:bold;">
+            Permission: 
+          </h5>
+          <input class="col-md-1"value="{{a.user_permissions| default:_('uno')}}" disabled="">
+          <hr>
+
+          <h5 style = "color:#000000;font-weight:bold;">
+            Staff: 
+          </h5>
+          <input class="col-md-1"value="{{a.is_staff| default:_('uno')}}" disabled="">
+          <hr>
+          <h5 style = "color:#000000;font-weight:bold;">
+            Active: 
+          </h5>
+          <input class="col-md-1" value="{{a.is_active | default:_('uno')}}" disabled="">
+          <hr>
+        </div>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Class: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.clas_name | default:_('Special person')}}</p>
+        <hr>
+
+        <h3 style = "color:#000000;font-weight:bold;">
+          Email: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{ a.email | default:_('jennydo@gmail.com ')}}</p>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;"> 
+          Section: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.section | default:_('Special VIP sales.')}}</p>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;"> 
+          Position: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.position  | default:_('Manager in charge.')}}</p>
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Notas: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.notices | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        <hr>
+      </div>
+
+    </div>
+  </div>     
+</div>
+
+    {% endfor %} 
+
+    <div style="display:flex;">
+      <div class="col-md-3 mx-3">
+       <a href=" {% url 'new_user' %}">
+        <button class="btn btn-success btn-sm" type="button" style="margin-left:10%;width:100px;"><i class="fa fa-plus"></i> New User</button>
+       </a>
+      </div>
+      <div class="col-md-3 mx-3">
+      <a href="{% url 'all_user_by_list' %}">
+          <button class="btn btn-info mx-3" type="button" style ='color:#fff';>
+            <i class="fa fa-file"></i>
+            List user
+          </button>
+        </a>
+      </div>
+    </div>
+ 
+    {% endblock  %}
+ </section>
+

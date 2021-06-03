@@ -1,0 +1,22 @@
+{% extends 'layouts/delete.html'%}
+  <section> 
+  
+
+      {% block form %} 
+
+        {{ form.title }}                
+      {% endblock %}
+
+      {%block name %} {{post.title }} {% endblock %}  
+                           
+      {%block return %}
+      <a href="{% url 'all_post' %}" style="color:white" >
+        <i class=" fa fa-undo"></i>
+        Return
+       </a> 
+      {% endblock %}
+                            
+
+  
+     
+</section> 

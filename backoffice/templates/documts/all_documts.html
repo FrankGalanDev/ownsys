@@ -1,0 +1,65 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Owner</th>  
+    <th>Category</th>   
+    <th>Name</th> 
+    <th>Code</th>   
+    <th>Posted</th> 
+    <th>Valid until</th>  
+    
+    <th>Updated at</th> 
+    <th>Document</th>
+    <th>See/Update</th> 
+    <th>Delete</th>  
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td>{{ a.owner}}</td>  
+      <td>{{a.categ_doc}}</td>   
+      <td class="accordion-toggle"  data-toggle="collapse" data-target="#rowcollapse_{{a.id}}"><i class="fa fa-info-circle" style="color:blue;"></i>{{a.document_name }}</td> 
+      <td>{{a.document_code}}</td>   
+      <td>{{a.created_at}}</td> 
+      <td>{{a.valid_until}}</td>  
+     
+      <td>{{a.updated_at}}</td>  
+      <td> 
+        <a href="/media/{{a.image}}" target="blank">
+          <i class="fa fa-file" style="color:brown; box-shadow: 2px 2px 2px gray;"></i></a>
+      </td>
+      <td>
+        <a href="{% url 'update_documt' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_documt' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>                 
+    </tr>
+     <tr class="collapse" id="rowcollapse_{{a.id}}" >
+      <td colspan="12"  >
+        <div>
+       <h4 style="color:red;">{{a.document_name }}:</h4> <p style="font-size.1.2em;">{{a.document_description}}
+      </div>
+        
+</td>
+    </tr>
+                  {% endfor%}
+    {% endblock%}
+
+    {% block to_new%}
+       <a href=" {% url 'new_documt' %}">
+    {% endblock %}

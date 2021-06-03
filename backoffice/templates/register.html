@@ -1,0 +1,48 @@
+{% extends 'layouts/login_template.html'%}
+{%load static %}
+
+{%block title_login%} 
+    'Register page'
+{% endblock%}
+
+
+
+              {% block company_tittle %}
+              Company Name 
+              {% endblock %} 
+             
+              {% block page_tittle %}
+                Backoffice
+              {% endblock  %}
+              
+
+           {% block login_intro %}
+
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+
+            {% endblock  %}
+
+
+{% block  form%}
+            <form class="text-left form-validate">
+              <div class="form-group-material">
+                <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">
+                <label for="register-username" class="label-material">Username</label>
+              </div>
+              <div class="form-group-material">
+                <input id="register-email" type="email" name="registerEmail" required data-msg="Please enter a valid email address" class="input-material">
+                <label for="register-email" class="label-material">Email Address      </label>
+              </div>
+              <div class="form-group-material">
+                <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
+                <label for="register-password" class="label-material">Password        </label>
+              </div>
+              <div class="form-group terms-conditions text-center">
+                <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="form-control-custom">
+                <label for="register-agree">I agree with the terms and policy</label>
+              </div>
+              <div class="form-group text-center">
+                <input id="register" type="submit" value="Register" class="btn btn-primary">
+              </div>
+            </form><small>Already have an account? </small><a href="login.html" class="signup">Login</a>
+  {% endblock%}

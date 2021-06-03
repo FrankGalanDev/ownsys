@@ -1,0 +1,35 @@
+
+.bt_update{
+	color: green;
+	background-color: transparent;
+}
+
+.bt_delete{
+	color: green;
+	background-color: transparent;
+
+}
+
+.bt_update, .bt_delete{
+	border:none;
+	
+}
+
+.bt_update:hover{
+	border:2px dotted black;
+	background-color: black;
+
+	
+}
+.bt_delete:hover{
+	border:2px dotted black;
+	background-color: pink;
+
+	
+}
+
+.avatar_user{
+	width:70%;
+	border:1px solid gray;
+	box-shadow: 2px 2px 12px gray;
+}

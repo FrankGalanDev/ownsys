@@ -1,0 +1,61 @@
+{% extends 'layouts/tables.html'%}
+{%load static %}
+
+
+    {% block columns%}
+
+    <th>Name</th> 
+    <th>Lastname</th> 
+    <th>Email</th>  
+    <th>Phone</th>
+    <th>Id Number</th>   
+    <th>Clasification</th> 
+    <th>See/Update</th> 
+    <th>Delete</th> 
+
+    
+    {% endblock%}
+                        
+    {%block rows%}                    
+                  {%for a in object_list %}
+    <tr>              
+      <td class="accordion-toggle"  data-toggle="collapse" data-target="#rowcollapse_{{a.id}}"><i class="fa fa-eye" style="color:green;"></i>  {{ a.customer_name}}</td>
+      <td>{{ a.customer_lastname}}</td> 
+      <td>{{ a.email}}</td>     
+      <td>{{a.phone}}</td>   
+      <td>{{a.identification_number }}</td> 
+      
+      <td>{{a.level}}</td> 
+      <td>
+        <a href="{% url 'update_customer' a.id %}">
+          <button  class="bt_update" type="submit" >
+            <i class="fa fa-eye"></i>
+            
+          </button>
+        </a>
+      </td>  
+       <td>
+        <a href="{% url 'delete_customer' a.id %}">
+          <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+          </button>
+        </a>
+      </td>          
+    </tr>
+
+    <tr class="collapse" id="rowcollapse_{{a.id}}" >
+      <td colspan="12"  >
+        <div>
+       {{a.note}} <br> Accept Promo activities: {{a.accept_promo}} <br>  Accept survey's actions: {{a.accept_survey}} <br> Accept be notified: {{a.accept_notifications}}
+      </div>
+        
+</td>
+    </tr>
+
+                  {% endfor%}
+    {% endblock%}
+                      
+    {% block to_new%}
+       <a href=" {% url 'new_customer' %}">
+    {% endblock %}

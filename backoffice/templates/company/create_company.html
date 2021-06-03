@@ -1,0 +1,135 @@
+{% extends 'layouts/backoffice.html'%}
+{% load static %}
+<section>  
+  {% block content %}
+   
+  <div class="breadcrumb-holder">
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'backoffice' %}">Home</a></li>
+        <li class="breadcrumb-item active">Company </li>
+      </ul>
+    </div>
+  </div>
+  
+  {% for a in object_list  %}    
+
+<div class="dashboard-header section-padding" style=" border:2px solid blue; margin-bottom:15px;">
+  <div class="container-fluid todo_item">
+    <div class="row d-flex align-items-md-stretch">
+      <div class="col-lg-3" >                
+        <img class="avatar_user" src='/media/{{a.image}}' alt="{{a.image}}" class="img-fluid  user_imag rounded-circle">
+          <a href="{% url 'update_company' a.id %}">
+            <button  class="bt_update" type="submit"><i class="fa fa-eye"></i>           
+            </button>
+          </a>
+      <!--
+          <a href="{% url 'delete_user' a.id %}">
+            <button class="bt_delete" type="submit" style ='color:red';>
+            <i class="fa fa-trash"></i>
+            
+            </button>
+          </a>
+       -->           
+      </div>
+
+      <div class="col-lg-9  ">
+        <h3 class="h3 " style = "color:#000000;font-weight:bold;">Company:</h3><p style = "color:gray; font-weight:bold; font-style:italic; font-size:1.3em;"> {{a.company_name | default:_('LocalSys')}}</p>
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Phone: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.phone | default:_('01196112122')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Email: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.email | default:_('Gilmore')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Website: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.web | default:_('Doe')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Postal Code: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.postal_code | default:_('Doe')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Country: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.country | default:_('London')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Address: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.address | default:_('Road Street 27. Silver Port')}}</p>
+        
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          Lemma: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;">{{ a.lema | default:_('Always by your side')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;">
+          About: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.about | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;"> 
+          Sales Conditions: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.sales_conditions | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        
+        <hr>
+        <h3 style = "color:#000000;font-weight:bold;"> 
+          Customer Advises: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.customer_notice| default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Protection custumer conditions: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.protection_policies | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        <hr>
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Example text 1: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.text_1 | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Example text 2: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.text_2 | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Example text 2: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.text_3 | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+        <hr>
+        <h3 class="mb-0" style = "color:#000000;font-weight:bold;"> 
+          Example text 4: 
+        </h3>
+        <p style = "color:gray; font-weight:bold; font-style:italic;"> {{a.text_4 | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text.Morbi nec mattis urna. Nullam pharetra felis vel nisi consectetur blandit. Mauris tempor hendrerit orci vitae dignissim. Nulla dignissim accumsan risus, et luctus dui ultricies sit amet. Aliquam dui lectus, porta non enim ut, pellentesque gravida leo. Sed ut magna et tellus suscipit tincidunt quis eget quam. Nullam libero ligula, iaculis ac tincidunt sit amet, tempor eu tortor. Aenean porttitor fringilla diam in vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ac orci eget dui dignissim tincidunt. Praesent blandit eros velit, rutrum vehicula erat gravida vitae. Integer dapibus venenatis volutpat. Vestibulum placerat a erat a maximus. Curabitur nec facilisis erat, ut vehicula mauris. ')}}</p>
+      </div>
+
+    </div>
+  </div>     
+</div>
+
+    {% endfor %} 
+
+    
+ 
+    {% endblock  %}
+ </section>

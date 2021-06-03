@@ -1,0 +1,176 @@
+{% extends 'layouts/backoffice.html'%}
+{% load static %}
+
+    
+    {% block content %}
+    <section>
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Tables</li>
+          </ul>
+        </div>
+      </div>
+    
+    {% block item %}   
+      {% for a in object_list  %} 
+    <!-- Slider area--> 
+      <div class="container-fluid">
+       <!-- Superior div-->     
+            
+            <div style= "display:flex;">
+        
+        {% block item_details  %}
+        <!-- Details Area-->        
+              <div class="col-lg-5 ">
+                <h2 class="h3 "> Name:{{a.item_name | default:_('Jacket')}}</h2>
+                <p>{{ a.price| default:_('120.0 ')}}</p>
+                <hr>
+                <p> Operation:{{ a.operation| default:_('Sales ')}}</p>
+                <hr>
+                 <p> Sold:{{ a.is_sold| default:_('yes')}}</p>
+                <p> Brand:{{ a.brand| default:_('Marca')}}</p>
+                <hr>
+                <p> Tax:{{ a.tax| default:_('21')}} %</p>
+                <hr>
+                <p> Purchase Cost:{{ a.purchase_price| default:_('60')}} {{ a.currency| default:_('$')}}</p>
+                <hr>
+                <p> Price:{{ a.price| default:_('120')}} {{ a.currency| default:_('$')}}</p>
+                <hr>
+                <p> Family:{{ a.family| default:_('WestWorld')}}</p>
+                <hr>
+                <p> Subfamily:{{ a.subfamily| default:_('Simple')}}</p>
+                <hr>
+                <p> Category:{{ a.categ| default:_('Imported')}}</p>
+                <hr>
+                <p> operation:{{ a.operation| default:_('Sales')}}</p>
+                <hr>
+                <p> EAN code:{{ a.ean| default:_('11223344556677')}}</p>
+                <hr>
+                <p> Size:{{ a.size| default:_('M')}}</p>
+                <hr>
+                <p> Weight:{{ a.weight| default:_('25')}}</p>
+                <hr>
+                
+                <p> Color:{{ a.color| default:_('aquablue')}}</p>
+                
+
+                <p>SKU:{{ a.item_SKU| default:_('5656565656')}}</p>
+                <hr>
+                <p> Section:{{a.section | default:_('Store A')}}</p>
+                <hr>
+                <p class="mb-0">Description:{{a.item_description | default:_('Contrary to popular belief, Lorem Ipsum is not simply random text. ')}}</p>
+                <hr>
+                 <p>Status{{ a.status| default:_('ready ')}}</p>
+                <p>Active{{ a.is_active| default:_('yes. ')}}</p>
+              </div>
+      <!-- End Details Area-->
+      
+
+      <!-- Main Image Area-->       
+              <div class="col-lg-7" style= "border:1px solid gray;">
+                
+                <div class="" data-slider-id="1">
+                  <a class="d-block" href="/media/{{a.image}}" data-lightbox="tool-gallery" title="Gallery item 1"><img class="img-fluid" src="/media/{{a.image}}" alt="...">
+                  </a>
+                  
+                  <a class="d-block" href="/media/{{a.image_1}}" data-lightbox="tool-gallery" title="Gallery item 2"><img class="img-fluid" src="/media/{{a.image_1}}" alt="...">
+                  </a>
+                  
+                  <a class="d-block" href="/media/{{a.image_2}}" data-lightbox="tool-gallery" title="Gallery item 3"><img class="img-fluid" src="/media/{{a.image_2}}" alt="..."></a>
+                  
+                  <a class="d-block" href="/media/{{a.image_3}}" data-lightbox="tool-gallery" title="Gallery item 4"><img class="img-fluid" src="/media/{{a.image_3}}" alt="...">
+                  </a>
+                  
+                  <a class="d-block" href="/media/{{a.image_4}}" data-lightbox="tool-gallery" title="Gallery item 3"><img class="img-fluid" src="/media/{{a.image_4}}" alt="..."></a>
+                  
+                  <a class="d-block" href="/media/{{a.image_5}}" data-lightbox="tool-gallery" title="Gallery item 4"><img class="img-fluid" src="/media/{{a.image_5}}" alt="...">
+                  </a>
+
+                </div>
+              </div>
+        <!-- End Main Image Area--> 
+        
+        </div>
+        <!-- End Superior div-->  
+       {% endblock %}
+
+        <!-- Second div-->    
+              <div class= "col-11">
+
+                <div class="slider_main row px-2" data-slider-id="1">
+          
+          <!-- Controls area--> 
+                  <div class= "slider_title-controls">
+                    <h4> Items </h4>
+                    <div class="indicators"> </div>
+                  </div> 
+          <!-- End Controls area-->   
+          {% block slider %}
+          <!-- Slider area-->        
+                    <div class="slider">
+                      <button role="button"  class="left_arrow" id="left_arrow"> <i class= fa fa-caret-left></i></button>
+
+                      <div class="slider_container">
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image}}" alt="..."></div>
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image_1}}" alt="..."></div>
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image_2}}" alt="..."></div>
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image_3}}" alt="..."></div>
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image_4}}" alt="..."></div>
+                        <div class="owl-thumb-item col-2 px-2"><img class="w-100 p-3" src="/media/{{a.image_5}}" alt="..."></div>
+                      </div>
+
+                      <button role="button"  class="right_arrow" id="right_arrow"> <i class= fa fa-arrow-right></i></button>
+
+                      
+                    </div>
+          {% endblock %}
+                  </div>
+               
+
+              </div>
+         <!-- End Second div-->  
+            </div>
+        <!-- End Slider area-->    
+    {% endfor %}    
+
+
+    {% endblock %}
+     
+     {% block pagination%}  
+        <div class="pagination">
+          <span class="step-links">
+          
+          {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+
+          <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+          
+          </span>
+       </div>              
+      {% endblock %} 
+
+   
+    <div class="card-footer">
+      {% block to_new%} 
+        <a href=" {% url 'new_item' %}"> {% endblock%}
+          <button type="submit"  class="btn btn-primary btn-flat">
+            <i class="fas fa fa-save"></i>
+              Add New 
+          </button>
+        </a>
+    </div>
+                      </section>
+     {% endblock  %}          
+               
+                
